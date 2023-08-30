@@ -44,7 +44,7 @@ class _MyAppBarContentState extends State<MyAppBarContent> {
       child: GestureDetector(
         onTap: () {
           setState(() {
-            selectedText = text; // 클릭한 텍스트를 변수에 저장
+            selectedText = text; // 클릭한 텍스트를 변수에 저 장
           });
           if (text == '사용자') {
             Navigator.push(
