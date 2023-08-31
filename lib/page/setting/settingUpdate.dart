@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tutorial/custom/appbar/appBar.dart';
 import 'package:flutter_tutorial/custom/button/update/cancleBtn.dart';
 import 'package:flutter_tutorial/custom/button/update/updateBtn.dart';
+import 'package:flutter_tutorial/custom/textEditor/textEditor.dart';
 
 void main() {
   runApp(settingUpdate());
@@ -43,7 +44,7 @@ class _SettingUpdateState extends State<settingUpdate> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '사용자 등록',
+                '설정 수정',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 30),
@@ -54,18 +55,27 @@ class _SettingUpdateState extends State<settingUpdate> {
               SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("코드", "PROMOTION_VIDEO_LINK"),
+                child: buildTextField("코드", "PROMOTION_VIDEO_LINK", 56),
               ),
               SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: buildTextField(
-                    "제목", "https://www.youtube.com/embed/f_eS74TTVWs"),
+                    "제목", "https://www.youtube.com/embed/f_eS74TTVWs", 150),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("내용", "내용을 입력해주세요."),
+              SizedBox(height: 40),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 90),
+                    child: Text(
+                      "내용",
+                      style:
+                          TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(width: 875, height: 500, child: TextEditor()),
+                ],
               ),
               SizedBox(height: 150),
               Row(
@@ -93,46 +103,46 @@ class _SettingUpdateState extends State<settingUpdate> {
     );
   }
 
-  Widget buildTextField(String label, String hintText) {
-    return Row(
-      children: [
-        Container(
-          width: 110,
-          child: Text(
-            label,
-            style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+  Widget buildTextField(
+    String label,
+    String hintText,
+    double height,
+  ) {
+    return Container(
+      child: Row(
+        children: [
+          Container(
+            width: 110,
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        SizedBox(width: 20),
-        Expanded(
-          child: Container(
-            height: 56,
-            child: TextField(
-              style: TextStyle(fontSize: 16.0),
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(fontSize: 14, color: Colors.black),
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 19, horizontal: 16),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(75, 75, 75, 0.5),
-                    width: 0.3,
-                  ),
+          SizedBox(width: 20),
+          Expanded(
+            child: Container(
+              height: height,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromRGBO(75, 75, 75, 0.5),
+                  width: 0.3,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(75, 75, 75, 0.5),
-                    width: 0.3,
-                  ),
+              ),
+              child: TextField(
+                style: TextStyle(fontSize: 16.0),
+                maxLines: null, // TextField가 세로로 자동으로 늘어나도록 허용
+                decoration: InputDecoration(
+                  hintText: hintText,
+                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 19, horizontal: 16),
+                  border: InputBorder.none,
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         title: 'start flutter',
         initialRoute: '',
         routes: {
-          '/': (context) => TextEditor(), //기본 설정 값
+          // '/': (context) => settingUpdate(), //기본 설정 값
+          '/': (context) => settingUpdate(), //기본 설정 값
         },
       ),
     );
