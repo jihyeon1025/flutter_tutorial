@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/login/login.dart';
+import 'package:flutter_tutorial/page/event/eventList.dart';
 import 'package:flutter_tutorial/page/setting/settingDetail.dart';
 import 'package:flutter_tutorial/page/setting/settingList.dart';
 import 'package:flutter_tutorial/page/setting/settingUpdate.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         title: 'start flutter',
         initialRoute: '',
         routes: {
-          '/': (context) => settingAdd(), //기본 설정 값
+          '/': (context) => EventList(), //기본 설정 값
         },
       ),
     );
