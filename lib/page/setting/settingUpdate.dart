@@ -20,7 +20,7 @@ class _SettingUpdateState extends State<settingUpdate> {
   @override
   void initState() {
     super.initState();
-    // updatepage 로드 후 불러올 위젯을 여기에 초기화
+    // addpage 로드 후 불러올 위젯을 여기에 초기화
     loadedTextEditorWidget =
         Container(width: 880, height: 500, child: TextEditor());
   }

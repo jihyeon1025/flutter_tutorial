@@ -9,6 +9,7 @@ import 'package:flutter_tutorial/page/user/userUpdate.dart';
 import 'package:flutter_tutorial/custom/appbar/appBar.dart';
 import 'package:flutter_tutorial/page/user/userList.dart';
 import 'package:flutter_tutorial/custom/textEditor/textEditor.dart';
+import 'package:flutter_tutorial/page/setting/settingAdd.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,8 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'start flutter',
         initialRoute: '',
         routes: {
-          // '/': (context) => settingUpdate(), //기본 설정 값
-          '/': (context) => settingUpdate(), //기본 설정 값
+          '/': (context) => settingAdd(), //기본 설정 값
         },
       ),
     );

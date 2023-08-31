@@ -85,7 +85,7 @@ class _SettingListState extends State<SettingList> {
                             PageRouteBuilder(
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
-                                        SettingAdd()));
+                                        settingAdd()));
                       },
                     ),
                     SizedBox(width: 22),

@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tutorial/custom/appbar/appBar.dart';
-import 'package:flutter_tutorial/custom/button/update/cancleBtn.dart';
-import 'package:flutter_tutorial/custom/button/update/updateBtn.dart';
+import 'package:flutter_tutorial/custom/button/add/cancleBtn.dart';
+import 'package:flutter_tutorial/custom/button/add/addBtn.dart';
+import 'package:flutter_tutorial/custom/textEditor/textEditor.dart';
 
 void main() {
-  runApp(SettingAdd());
+  runApp(settingAdd());
 }
 
-class SettingAdd extends StatefulWidget {
+class settingAdd extends StatefulWidget {
   @override
   _SettingAddState createState() => _SettingAddState();
 }
 
-class _SettingAddState extends State<SettingAdd> {
+class _SettingAddState extends State<settingAdd> {
+  late Widget loadedTextEditorWidget; // 로드된 위젯을 저장할 변수
+
+  @override
+  void initState() {
+    super.initState();
+    // addpage 로드 후 불러올 위젯을 여기에 초기화
+    loadedTextEditorWidget =
+        Container(width: 990, height: 550, child: TextEditor());
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,7 +54,7 @@ class _SettingAddState extends State<SettingAdd> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '설정 상세',
+                '설정 추가',
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 30),
@@ -54,30 +65,37 @@ class _SettingAddState extends State<SettingAdd> {
               SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("이메일", "이메일을 입력해주세요."),
+                child: buildTextField("코드", "코드를 입력해주세요", 56),
               ),
               SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("비밀번호", "비밀번호를 입력해주세요."),
+                child: buildTextField("제목", "제목을 입력해주세요.", 150),
               ),
               SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("이름", "이름을 입력해주세요."),
+              Row(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 27, right: 90, bottom: 15),
+                    child: Text(
+                      "내용",
+                      style:
+                          TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("소속", "소속을 입력해주세요."),
+              // 로드된 위젯 사용
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: loadedTextEditorWidget,
+                  ),
+                ],
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("권한", "권한을 입력해주세요."),
-              ),
-              SizedBox(height: 150),
-              SizedBox(height: 150),
+              SizedBox(height: 120),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -89,7 +107,7 @@ class _SettingAddState extends State<SettingAdd> {
                       },
                     ),
                   ),
-                  CustomUpdateButton(
+                  CustomAddButton(
                     onPressed: () {
                       // 추가 버튼을 눌렀을 때 수행할 동작을 여기에 작성
                     },
@@ -103,46 +121,46 @@ class _SettingAddState extends State<SettingAdd> {
     );
   }
 
-  Widget buildTextField(String label, String hintText) {
-    return Row(
-      children: [
-        Container(
-          width: 110,
-          child: Text(
-            label,
-            style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+  Widget buildTextField(
+    String label,
+    String hintText,
+    double height,
+  ) {
+    return Container(
+      child: Row(
+        children: [
+          Container(
+            width: 110,
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        SizedBox(width: 20),
-        Expanded(
-          child: Container(
-            height: 56,
-            child: TextField(
-              style: TextStyle(fontSize: 16.0),
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(fontSize: 14, color: Colors.black54),
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 19, horizontal: 16),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(75, 75, 75, 0.5),
-                    width: 0.3,
-                  ),
+          SizedBox(width: 10),
+          Expanded(
+            child: Container(
+              height: height,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromRGBO(75, 75, 75, 0.5),
+                  width: 0.3,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(0.0)),
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(75, 75, 75, 0.5),
-                    width: 0.3,
-                  ),
+              ),
+              child: TextField(
+                style: TextStyle(fontSize: 16.0),
+                maxLines: null, // TextField가 세로로 자동으로 늘어나도록 허용
+                decoration: InputDecoration(
+                  hintText: hintText,
+                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 19, horizontal: 16),
+                  border: InputBorder.none,
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
