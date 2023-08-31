@@ -1,9 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_tutorial/custom/appbar/appBar.dart';
 import 'package:flutter_tutorial/custom/button/detail/listBtn.dart';
 import 'package:flutter_tutorial/custom/button/detail/updateBtn.dart';
+import 'package:flutter_tutorial/custom/button/detail/deleteBtn.dart';
 import 'package:flutter_tutorial/page/event/eventUpdate.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(EventDetail());
@@ -20,151 +23,134 @@ class _EventDetailState extends State<EventDetail> {
     return MaterialApp(
       title: 'Flutter App',
       home: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 70,
-          backgroundColor: Color(0xFF003E65),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 50),
-                child: SvgPicture.asset(
-                  'assets/logo.svg',
-                  height: 35,
+          appBar: AppBar(
+            toolbarHeight: 70,
+            backgroundColor: Color(0xFF003E65),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 50),
+                  child: SvgPicture.asset(
+                    'assets/logo.svg',
+                    height: 35,
+                  ),
                 ),
-              ),
-              MyAppBarContent(),
-            ],
+                MyAppBarContent(),
+              ],
+            ),
           ),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(
-              top: 100, bottom: 50, left: 760, right: 760),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '이벤트 상세',
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 30),
-              Container(
-                height: 3,
-                color: Colors.black,
-              ),
-              SizedBox(height: 30),
-              buildTextFieldRow("코드", "PROMOTION_VIDEO_LINK"),
-              SizedBox(height: 10),
-              buildTextFieldRow(
-                  "제목", "https://www.youtube.com/embed/f_eS74TTVWs"),
-              SizedBox(height: 10),
-              buildContentSquare("내용", "테스트 내용입니다."),
-              SizedBox(height: 10),
-              buildTextFieldRow("작성자", "석지훈"),
-              SizedBox(height: 10),
-              buildTextFieldRow("작성일", "2023.08.07 15:14"),
-              SizedBox(height: 150),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  top: 100, bottom: 50, left: 760, right: 760),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: CustomListButton(
-                      onPressed: () {
-                        // 취소 버튼을 눌렀을 때 수행할 동작을 여기에 작성
-                      },
+                  Text(
+                    '이벤트 안내',
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    height: 3,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 1005,
+                    height: 1400,
+                    child: Image.asset(
+                      'assets/image1.jpeg',
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  CustomUpdateButton(
-                    onPressed: () {
-                      // 각 사용자 항목 클릭 시 페이지 이동
-                      Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                              pageBuilder:
-                                  (context, animation, secondaryAnimation) =>
-                                      eventUpdate()));
-                    },
-                  )
+                  SizedBox(height: 30),
+                  Row(
+                    children: [
+                      Text(
+                        "CLOSE",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "2023 인천개항장 문화재야행 쿠폰 받자!",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "2023.08.22 - 2023.08.31",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    height: 2,
+                    color: Colors.black,
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        "2023 인천개항장 문화재야행 쿠폰 받자!",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "html/notice/noticeDetail.html?&noticeId=54",
+                          style:
+                              TextStyle(fontSize: 14, color: Color(0xFF0000EE)),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              launch(
+                                  'html/notice/noticeDetail.html?&noticeId=54'); // 실제 URL로 변경
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 200),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center, // 가로 중앙 정렬
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: CustomListButton(
+                          onPressed: () {
+                            // 추가 버튼을 눌렀을 때 수행할 동작을 여기에 작성
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15),
+                        child: CustomUpdateButton(
+                          onPressed: () {
+                            // 수정 버튼을 눌렀을 때 수행할 동작을 여기에 작성
+                          },
+                        ),
+                      ),
+                      CustomDeleteButton(
+                        onPressed: () {
+                          // 삭제 버튼을 눌렀을 때 수행할 동작을 여기에 작성
+                        },
+                      )
+                    ],
+                  ),
                 ],
               ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-//내용만
-  Widget buildContentSquare(String label, String content) {
-    return Container(
-      padding: const EdgeInsets.only(top: 15, left: 30),
-      decoration: BoxDecoration(
-        color: Color(0xFFF0F0F0), // Background color
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 15),
-            child: Container(
-              width: 1050,
-              height: 60,
-              color: Color(0xFFF0F0F0),
-              child: Text(content, style: TextStyle(fontSize: 16)),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildTextFieldRow(String label, String hintText) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      decoration: BoxDecoration(
-        color: Color(0xFFF0F0F0), // Background color
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 90,
-            decoration: BoxDecoration(
-              border: Border(
-                right: BorderSide(width: 0.3, color: Colors.grey),
-              ),
-            ),
-            padding: const EdgeInsets.only(left: 7),
-            child: Text(
-              label,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          SizedBox(width: 20),
-          Expanded(
-            child: Container(
-              height: 48,
-              color: Color(0xFFF0F0F0),
-              child: TextField(
-                style: TextStyle(fontSize: 16.0),
-                decoration: InputDecoration(
-                  hintText: hintText,
-                  hintStyle: TextStyle(fontSize: 14, color: Colors.black),
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 19, horizontal: 16),
-                  border: InputBorder.none,
-                ),
-                enabled: false,
-              ),
-            ),
-          ),
-        ],
-      ),
+          )),
     );
   }
 }

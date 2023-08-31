@@ -47,67 +47,70 @@ class _SettingUpdateState extends State<settingUpdate> {
             ],
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(
-              top: 100, bottom: 50, left: 760, right: 760),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '설정 수정',
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 30),
-              Container(
-                height: 3,
-                color: Colors.black,
-              ),
-              SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("코드", "PROMOTION_VIDEO_LINK", 56),
-              ),
-              SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField(
-                    "제목", "https://www.youtube.com/embed/f_eS74TTVWs", 150),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 90),
-                    child: Text(
-                      "내용",
-                      style:
-                          TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.only(
+                top: 100, bottom: 50, left: 760, right: 760),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '설정 수정',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  height: 3,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: buildTextField("코드", "PROMOTION_VIDEO_LINK", 56),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: buildTextField(
+                      "제목", "https://www.youtube.com/embed/f_eS74TTVWs", 150),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10, right: 90),
+                      child: Text(
+                        "내용",
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  // 로드된 위젯 사용
-                  loadedTextEditorWidget,
-                ],
-              ),
-              SizedBox(height: 150),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15),
-                    child: CustomCancelButton(
+                    // 로드된 위젯 사용
+                    loadedTextEditorWidget,
+                  ],
+                ),
+                SizedBox(height: 150),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: CustomCancelButton(
+                        onPressed: () {
+                          // 취소 버튼을 눌렀을 때 수행할 동작을 여기에 작성
+                        },
+                      ),
+                    ),
+                    CustomUpdateButton(
                       onPressed: () {
-                        // 취소 버튼을 눌렀을 때 수행할 동작을 여기에 작성
+                        // 추가 버튼을 눌렀을 때 수행할 동작을 여기에 작성
                       },
-                    ),
-                  ),
-                  CustomUpdateButton(
-                    onPressed: () {
-                      // 추가 버튼을 눌렀을 때 수행할 동작을 여기에 작성
-                    },
-                  )
-                ],
-              ),
-            ],
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
