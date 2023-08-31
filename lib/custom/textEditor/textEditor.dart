@@ -32,11 +32,17 @@ class _EditorScreenState extends State<EditorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 0),
+            Container(
+              width: double.infinity, //크기 똑같게 조정
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0.3,
+                  color: Color.fromRGBO(75, 75, 75, 0.5),
+                ),
+              ),
               child: QuillToolbar.basic(
                 controller: _controller,
                 fontSizeValues: const {
@@ -47,34 +53,29 @@ class _EditorScreenState extends State<EditorScreen> {
                 showAlignmentButtons: false,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Expanded(
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.5,
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 0.3,
+                    color: Color.fromRGBO(75, 75, 75, 0.5),
+                  ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.lightBlueAccent,
-                      offset: Offset(5.0, 5.0),
-                      blurRadius: 10.0,
-                      spreadRadius: 2.0,
+                      color: Colors.black,
                     ),
+                    //input창
                     BoxShadow(
                       color: Colors.white,
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 0.0,
-                      spreadRadius: 0.0,
                     ),
                   ],
                 ),
-                child: SingleChildScrollView(
-                  // ScrollController 생성 및 적용
-                  controller: ScrollController(),
-                  child: QuillEditor.basic(
-                    controller: _controller,
-                    readOnly: false,
-                  ),
+                child: QuillEditor.basic(
+                  controller: _controller,
+                  focusNode: FocusNode(),
+                  autoFocus: false,
+                  readOnly: false,
+                  expands: false,
                 ),
               ),
             ),

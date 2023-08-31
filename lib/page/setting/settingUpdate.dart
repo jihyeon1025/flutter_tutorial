@@ -15,6 +15,16 @@ class settingUpdate extends StatefulWidget {
 }
 
 class _SettingUpdateState extends State<settingUpdate> {
+  late Widget loadedTextEditorWidget; // 로드된 위젯을 저장할 변수
+
+  @override
+  void initState() {
+    super.initState();
+    // updatepage 로드 후 불러올 위젯을 여기에 초기화
+    loadedTextEditorWidget =
+        Container(width: 880, height: 500, child: TextEditor());
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,18 +73,19 @@ class _SettingUpdateState extends State<settingUpdate> {
                 child: buildTextField(
                     "제목", "https://www.youtube.com/embed/f_eS74TTVWs", 150),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 10),
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 90),
+                    padding: const EdgeInsets.only(left: 10, right: 90),
                     child: Text(
                       "내용",
                       style:
                           TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(width: 875, height: 500, child: TextEditor()),
+                  // 로드된 위젯 사용
+                  loadedTextEditorWidget,
                 ],
               ),
               SizedBox(height: 150),
@@ -118,7 +129,7 @@ class _SettingUpdateState extends State<settingUpdate> {
               style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(width: 20),
+          SizedBox(width: 10),
           Expanded(
             child: Container(
               height: height,
