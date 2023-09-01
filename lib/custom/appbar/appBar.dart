@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/page/cultureHeritage/cultureHeritageList.dart';
 import 'package:flutter_tutorial/page/festival/festivalList.dart';
 import 'package:flutter_tutorial/page/gallery/galleryList.dart';
 import 'package:flutter_tutorial/page/notice/noticeList.dart';
+import 'package:flutter_tutorial/page/promotionVideo/promotionVideoList.dart';
 import 'package:flutter_tutorial/page/user/userList.dart';
 import 'package:flutter_tutorial/login/login.dart';
 import 'package:flutter_tutorial/page/setting/settingList.dart';
@@ -106,14 +108,14 @@ class _MyAppBarContentState extends State<MyAppBarContent> {
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        UserList()));
+                        PromotionVideoList()));
           }
           if (text == '문화재') {
             Navigator.push(
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        UserList()));
+                        CultureHeritageList()));
           }
           if (text == '민간시설') {
             Navigator.push(
