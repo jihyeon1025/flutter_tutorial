@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/page/notice/noticeList.dart';
 import 'package:flutter_tutorial/page/user/userList.dart';
 import 'package:flutter_tutorial/login/login.dart';
 import 'package:flutter_tutorial/page/setting/settingList.dart';
 import 'package:flutter_tutorial/page/event/eventList.dart';
+import 'package:flutter_tutorial/page/complaint/complaintList.dart';
 
 class MyAppBarContent extends StatefulWidget implements PreferredSizeWidget {
   //상태관리
@@ -73,7 +75,7 @@ class _MyAppBarContentState extends State<MyAppBarContent> {
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        UserList()));
+                        NoticeList()));
           }
 
           if (text == '민원') {
@@ -81,7 +83,7 @@ class _MyAppBarContentState extends State<MyAppBarContent> {
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        UserList()));
+                        ComplaintList()));
           }
           if (text == '행사') {
             Navigator.push(

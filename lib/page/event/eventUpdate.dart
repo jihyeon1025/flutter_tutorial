@@ -214,13 +214,16 @@ class _EventUpdateState extends State<eventUpdate> {
                       ),
                     )),
                 SizedBox(height: 15),
-                Center(
-                  child: Container(
-                    width: 1000,
-                    height: 1300,
-                    child: Image.asset(
-                      'assets/image1.jpeg',
-                      fit: BoxFit.fill, // 이미지가 컨테이너에 가득 차도록 조절
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, bottom: 10),
+                  child: Center(
+                    child: Container(
+                      width: 1000,
+                      height: 1300,
+                      child: Image.asset(
+                        'assets/image1.jpeg',
+                        fit: BoxFit.fill, // 이미지가 컨테이너에 가득 차도록 조절
+                      ),
                     ),
                   ),
                 ),
@@ -231,7 +234,7 @@ class _EventUpdateState extends State<eventUpdate> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: CustomUpdateButton(
+                          child: CustomUploadButton(
                             onPressed: () {
                               // 추가 버튼을 눌렀을 때 수행할 동작을 여기에 작성
                             },

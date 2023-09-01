@@ -136,8 +136,8 @@ class _SettingDetailState extends State<SettingDetail> {
             width: 90,
             decoration: BoxDecoration(
               border: Border(
-                right: BorderSide(width: 0.3, color: Colors.grey),
-              ),
+                  // right: BorderSide(width: 0.3, color: Colors.grey),
+                  ),
             ),
             padding: const EdgeInsets.only(left: 7),
             child: Text(
