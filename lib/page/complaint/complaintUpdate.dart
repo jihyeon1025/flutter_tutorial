@@ -85,7 +85,7 @@ class _ComplaintUpdateState extends State<complaintUpdate> {
                     loadedTextEditorWidget,
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 10),
                 Container(
                   child: Row(
                     children: [

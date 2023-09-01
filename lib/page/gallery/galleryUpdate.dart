@@ -5,17 +5,18 @@ import 'package:flutter_tutorial/custom/button/update/cancleBtn.dart';
 import 'package:flutter_tutorial/custom/button/update/updateBtn.dart';
 import 'package:flutter_tutorial/custom/textEditor/textEditor.dart';
 import 'package:flutter_tutorial/custom/button/add/uploadBtn.dart';
+import 'package:flutter_tutorial/custom/datepicker/datePicker.dart';
 
 void main() {
-  runApp(noticeAdd());
+  runApp(galleryUpdate());
 }
 
-class noticeAdd extends StatefulWidget {
+class galleryUpdate extends StatefulWidget {
   @override
-  _NoticeAddState createState() => _NoticeAddState();
+  _GalleryUpdateState createState() => _GalleryUpdateState();
 }
 
-class _NoticeAddState extends State<noticeAdd> {
+class _GalleryUpdateState extends State<galleryUpdate> {
   late Widget loadedTextEditorWidget; // 로드된 위젯을 저장할 변수
 
   @override
@@ -28,6 +29,7 @@ class _NoticeAddState extends State<noticeAdd> {
 
   @override
   Widget build(BuildContext context) {
+    var hintText;
     return MaterialApp(
       title: 'Flutter App',
       home: Scaffold(
@@ -57,26 +59,38 @@ class _NoticeAddState extends State<noticeAdd> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '공지사항 추가',
+                  '갤러리 수정',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 30),
                 Container(
                   height: 3,
                   color: Colors.black,
                 ),
-                SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: buildTextField("제목", "제목을 입력하세요.", 56),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 70, left: 6),
+                      child: Text(
+                        "행사일",
+                        style: TextStyle(
+                            fontSize: 21, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 7),
+                      child: Container(
+                          width: 200, height: 90, child: DatePickerExample()),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 10),
+                buildTextField("제목", "2022 인천개항장 문화재 야행-1야행-야로-인천e지 스탬프투어", 56),
+                SizedBox(height: 30),
                 Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 90),
                       child: Text(
-                        "내용",
+                        "설명",
                         style: TextStyle(
                             fontSize: 21, fontWeight: FontWeight.bold),
                       ),

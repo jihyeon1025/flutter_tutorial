@@ -68,7 +68,7 @@ class _ComplaintAddState extends State<complaintAdd> {
                 SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: buildTextField("제목", "8월 야행 신문", 56),
+                  child: buildTextField("제목", "제목을 입력하세요", 56),
                 ),
                 SizedBox(height: 10),
                 Row(
@@ -110,6 +110,17 @@ class _ComplaintAddState extends State<complaintAdd> {
                     ],
                   ),
                 ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: buildTextField("이메일", "shadow939590@gmail.com ", 56),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: buildTextField("작성자", "유영훈", 56),
+                ),
+                SizedBox(height: 10),
                 SizedBox(height: 120),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

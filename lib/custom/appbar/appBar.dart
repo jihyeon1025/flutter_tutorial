@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/page/festival/festivalList.dart';
+import 'package:flutter_tutorial/page/gallery/galleryList.dart';
 import 'package:flutter_tutorial/page/notice/noticeList.dart';
 import 'package:flutter_tutorial/page/user/userList.dart';
 import 'package:flutter_tutorial/login/login.dart';
@@ -90,14 +92,14 @@ class _MyAppBarContentState extends State<MyAppBarContent> {
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        UserList()));
+                        FestivalList()));
           }
           if (text == '갤러리') {
             Navigator.push(
                 context,
                 PageRouteBuilder(
                     pageBuilder: (context, animation, secondaryAnimation) =>
-                        UserList()));
+                        GalleryList()));
           }
           if (text == '홍보영상') {
             Navigator.push(
