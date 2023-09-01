@@ -136,7 +136,12 @@ class _EventDetailState extends State<EventDetail> {
                         padding: const EdgeInsets.only(right: 15),
                         child: CustomUpdateButton(
                           onPressed: () {
-                            // 수정 버튼을 눌렀을 때 수행할 동작을 여기에 작성
+                            Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                    pageBuilder: (context, animation,
+                                            secondaryAnimation) =>
+                                        eventUpdate()));
                           },
                         ),
                       ),

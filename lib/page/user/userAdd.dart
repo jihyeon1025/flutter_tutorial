@@ -14,6 +14,9 @@ class userAdd extends StatefulWidget {
 }
 
 class _UserAddState extends State<userAdd> {
+  final _valueList = ['ADMIN', 'USER'];
+  var _selectedValue = 'ADMIN';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -72,9 +75,66 @@ class _UserAddState extends State<userAdd> {
                 child: buildTextField("소속", "소속을 입력해주세요."),
               ),
               SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: buildTextField("권한", "권한을 입력해주세요."),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 22),
+                  child: Row(
+                    children: [
+                      Text('상태',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      SizedBox(width: 85),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Container(
+                          width: 872,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color.fromRGBO(75, 75, 75, 0.5),
+                              width: 0.3,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                            ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                value: _selectedValue,
+                                icon: Icon(Icons.keyboard_arrow_down_outlined),
+                                iconSize: 30,
+                                elevation: 16,
+                                dropdownColor: Colors.white,
+                                focusColor: Colors.white,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedValue = value!;
+                                  });
+                                },
+                                items: _valueList.map((value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Text(value,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                          )),
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(height: 150),
               // Container(

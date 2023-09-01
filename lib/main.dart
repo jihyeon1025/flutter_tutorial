@@ -3,6 +3,7 @@ import 'package:flutter_tutorial/login/login.dart';
 import 'package:flutter_tutorial/page/event/eventAdd.dart';
 import 'package:flutter_tutorial/page/event/eventDetail.dart';
 import 'package:flutter_tutorial/page/event/eventList.dart';
+import 'package:flutter_tutorial/page/event/eventUpdate.dart';
 import 'package:flutter_tutorial/page/setting/settingDetail.dart';
 import 'package:flutter_tutorial/page/setting/settingList.dart';
 import 'package:flutter_tutorial/page/setting/settingUpdate.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         title: 'start flutter',
         initialRoute: '',
         routes: {
-          '/': (context) => eventAdd(), //기본 설정 값
+          '/': (context) => eventUpdate(), //기본 설정 값
         },
       ),
     );

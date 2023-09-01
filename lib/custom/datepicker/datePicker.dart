@@ -89,8 +89,8 @@ class _DatePickerExampleState extends State<DatePickerExample>
           Row(
             children: [
               Container(
-                width: 105,
-                height: 38,
+                width: 125,
+                height: 36,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15), //경계면에서 떨어지게
                 decoration: BoxDecoration(
@@ -99,35 +99,51 @@ class _DatePickerExampleState extends State<DatePickerExample>
                     width: 1.5, // 경계 선 두께 설정
                   ),
                 ),
-                child: TextField(
-                  controller: TextEditingController(
-                    text:
-                        '${_selectedDate.value.year}-${_selectedDate.value.month}-${_selectedDate.value.day}',
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: TextField(
+                    controller: TextEditingController(
+                      text:
+                          '${_selectedDate.value.year}-${_selectedDate.value.month}-${_selectedDate.value.day}',
+                    ),
+                    readOnly: true, // To prevent manual editing of the date
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                    ),
                   ),
-                  readOnly: true, // To prevent manual editing of the date
                 ),
               ),
               Container(
-                width: 55,
-                height: 38,
+                width: 39,
+                height: 36,
                 decoration: BoxDecoration(
                   color: Color(0xFF003E65),
                   border: Border.all(
-                    color: Color(0xFF003E65), // 경계 선 색상 설정
-                    width: 1.5, // 경계 선 두께 설정
+                    color: Color(0xFF003E65),
+                    width: 1.5,
                   ),
                 ),
-                child: OutlinedButton(
-                  onPressed: () {
-                    _restorableDatePickerRouteFuture.present();
-                  },
-                  child: Icon(
-                    Icons.calendar_month_rounded,
-                    size: 30,
-                    color: Colors.white,
-                  ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 36,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          _restorableDatePickerRouteFuture.present();
+                        },
+                        child: Container(
+                          width: 50,
+                          child: Icon(
+                            Icons.calendar_month_rounded,
+                            size: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
+              )
             ],
           ),
         ],
